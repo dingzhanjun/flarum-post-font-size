@@ -1,0 +1,23 @@
+{
+  "name": "freehuaren/post-font-size",
+  "description": "Adds small, medium, and large reading font size controls to Flarum discussion pages.",
+  "type": "flarum-extension",
+  "require": {
+    "flarum/core": "^1.8"
+  },
+  "extra": {
+    "flarum-extension": {
+      "title": "FreeHuaren Post Font Size",
+      "icon": {
+        "name": "fas fa-font",
+        "backgroundColor": "#c62828",
+        "color": "#ffffff"
+      }
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "FreeHuaren\\PostFontSize\\": "src/"
+    }
+  }
+}

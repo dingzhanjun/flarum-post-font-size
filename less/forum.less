@@ -1,0 +1,44 @@
+.FreeHuaren-post-font-small .Post-body {
+  font-size: 15px;
+}
+
+.FreeHuaren-post-font-medium .Post-body {
+  font-size: 17px;
+}
+
+.FreeHuaren-post-font-large .Post-body {
+  font-size: 20px;
+}
+
+.FreeHuarenFontSizeControl {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.FreeHuarenFontSizeControl-label {
+  margin-right: 4px;
+  color: var(--muted-color);
+  font-size: 13px;
+}
+
+.FreeHuarenFontSizeControl-button {
+  min-width: 30px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  line-height: 1.4;
+  color: var(--muted-color);
+}
+
+.FreeHuarenFontSizeControl-button.is-active {
+  background: var(--control-bg);
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+@media (max-width: 767px) {
+  .FreeHuarenFontSizeControl {
+    margin-top: 4px;
+  }
+}
