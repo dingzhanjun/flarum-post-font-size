@@ -19,7 +19,7 @@ jobs:
           script: |
             set -e
 
-            DEPLOY_PATH="${{ vars.DEPLOY_PATH || '/home/admin/new-hr-forum/flarum/packages/freehuaren-post-font-size' }}"
+            DEPLOY_PATH="${{ vars.DEPLOY_PATH || '/home/admin/new-hr-forum/flarum/packages/flarum-post-font-size' }}"
             FLARUM_CONTAINER="${{ vars.FLARUM_CONTAINER || 'new-hr-forum-flarum-1' }}"
 
             cd "$DEPLOY_PATH"
