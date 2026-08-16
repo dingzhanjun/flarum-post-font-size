@@ -13,12 +13,12 @@ Flarum 1.8 extension that adds 小 / 中 / 大 reading-size controls on discussi
 
 Place the extension at:
 
-`/app/packages/freehuaren-post-font-size`
+`/app/packages/flarum-post-font-size`
 
 Build frontend assets from the extension `js` directory using a temporary Node container:
 
 ```bash
-cd /home/admin/new-hr-forum/flarum/packages/freehuaren-post-font-size/js
+cd /home/admin/new-hr-forum/flarum/packages/flarum-post-font-size/js
 docker run --rm \
   -v "$PWD:/app" \
   -w /app \
@@ -30,7 +30,7 @@ Register once with Composer:
 
 ```bash
 cd /app
-composer config repositories.freehuaren-post-font-size path packages/freehuaren-post-font-size
+composer config repositories.flarum-post-font-size path packages/flarum-post-font-size
 composer require freehuaren/post-font-size:@dev
 php flarum cache:clear
 ```
@@ -39,8 +39,8 @@ Register and install from the Flarum root using container because php container 
 
 ```bash
 cd /home/admin/new-hr-forum
-docker run --rm   -v "$PWD/flarum:/app"   -w /app   composer:latest   composer config repositories.freehuaren-post-font-size   path packages/freehuaren-post-font-size
-docker run --rm   -v "$PWD/flarum:/app"   -w /app   composer:latest   composer require freehuaren/freehuaren-post-font-size:@dev
+docker run --rm   -v "$PWD/flarum:/app"   -w /app   composer:latest   composer config repositories.flarum-post-font-size   path packages/flarum-post-font-size
+docker run --rm   -v "$PWD/flarum:/app"   -w /app   composer:latest   composer require freehuaren/flarum-post-font-size:@dev
 ```
 
 Then enable **FreeHuaren Post Font Size** in Flarum Admin > Extensions.

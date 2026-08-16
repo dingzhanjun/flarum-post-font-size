@@ -1,5 +1,5 @@
 {
-  "name": "freehuaren/post-font-size",
+  "name": "freehuaren/flarum-post-font-size",
   "description": "Adds small, medium, and large reading font size controls to Flarum discussion pages.",
   "type": "flarum-extension",
   "require": {
