@@ -47,10 +47,10 @@ function FontSizeControls() {
   );
 }
 
-app.initializers.add('freehuaren-post-font-size', () => {
+app.initializers.add('flarum-post-font-size', () => {
   applySize(getSavedSize());
 
   extend(DiscussionPage.prototype, 'sidebarItems', function (items) {
-    items.add('freehuaren-post-font-size', <FontSizeControls />, 5);
+    items.add('flarum-post-font-size', <FontSizeControls />, 5);
   });
 });
