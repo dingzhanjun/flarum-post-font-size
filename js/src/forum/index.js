@@ -4,6 +4,7 @@ import DiscussionPage from 'flarum/forum/components/DiscussionPage';
 import Button from 'flarum/common/components/Button';
 import Post from 'flarum/forum/components/Post';
 import CommentPost from 'flarum/forum/components/CommentPost';
+import PostUser from 'flarum/forum/components/PostUser';
 
 const STORAGE_KEY = 'freehuaren-post-font-size';
 const SIZES = ['small', 'medium', 'large'];
@@ -52,8 +53,11 @@ function FontSizeControls() {
 app.initializers.add('flarum-post-font-size', () => {
   applySize(getSavedSize());
 
-  extend(Post.prototype, 'headerItems', function (items) {
-    console.log(items)
-    items.add('flarum-post-font-size', <FontSizeControls />, 5);
+  extend(PostUser.prototype, 'view', function (vnode) {
+    if (!vnode || !vnode.children) return;
+    if (Array.isArray(vnode.children)) {
+      vnode.children.push(<FontSizeControls />);
+    }
+    // items.add('flarum-post-font-size', <FontSizeControls />, 5);
   });
 });
