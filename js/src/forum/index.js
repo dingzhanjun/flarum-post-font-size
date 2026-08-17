@@ -50,7 +50,7 @@ function FontSizeControls() {
 app.initializers.add('flarum-post-font-size', () => {
   applySize(getSavedSize());
 
-  extend(DiscussionPage.prototype, 'sidebarItems', function (items) {
+  extend(Post.prototype, 'headerItems', function (items) {
     console.log(items)
     items.add('flarum-post-font-size', <FontSizeControls />, 5);
   });
