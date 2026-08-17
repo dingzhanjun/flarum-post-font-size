@@ -28,11 +28,10 @@ const FontSizeControls = {
 
     return (
       <div className="FreeHuarenFontSizeControl" role="group" aria-label="帖子字号">
-        <span className="FreeHuarenFontSizeControl-label">字号</span>
         {[
-          ['small', '小'],
-          ['medium', '中'],
-          ['large', '大'],
+          ['small', 'A-'],
+          ['medium', 'A'],
+          ['large', 'A+'],
         ].map(([size, label]) => (
           <Button
             className={`Button Button--link FreeHuarenFontSizeControl-button ${current === size ? 'is-active' : ''}`}
