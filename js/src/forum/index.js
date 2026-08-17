@@ -52,6 +52,10 @@ const FontSizeControls = {
 app.initializers.add('flarum-post-font-size', () => {
   applySize(getSavedSize());
 
+  extend(CommentPost.prototype, 'oninit', function () {
+    this.subtree.check(() => getSavedSize());
+  });
+
   extend(CommentPost.prototype, 'headerItems', function (items) {
     items.add('fontSize', <FontSizeControls />);
   });
