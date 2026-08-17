@@ -22,30 +22,32 @@ function applySize(size) {
   localStorage.setItem(STORAGE_KEY, size);
 }
 
-function FontSizeControls() {
-  const current = getSavedSize();
+const FontSizeControls = {
+  view() {
+    const current = getSavedSize();
 
-  return (
-    <div className="FreeHuarenFontSizeControl" role="group" aria-label="帖子字号">
-      <span className="FreeHuarenFontSizeControl-label">字号</span>
-      {[
-        ['small', '小'],
-        ['medium', '中'],
-        ['large', '大'],
-      ].map(([size, label]) => (
-        <Button
-          className={`Button Button--link FreeHuarenFontSizeControl-button ${current === size ? 'is-active' : ''}`}
-          onclick={() => {
-            applySize(size);
-            m.redraw();
-          }}
-        >
-          {label}
-        </Button>
-      ))}
-    </div>
-  );
-}
+    return (
+      <div className="FreeHuarenFontSizeControl" role="group" aria-label="帖子字号">
+        <span className="FreeHuarenFontSizeControl-label">字号</span>
+        {[
+          ['small', '小'],
+          ['medium', '中'],
+          ['large', '大'],
+        ].map(([size, label]) => (
+          <Button
+            className={`Button Button--link FreeHuarenFontSizeControl-button ${current === size ? 'is-active' : ''}`}
+            onclick={() => {
+              applySize(size);
+              m.redraw();
+            }}
+          >
+            {label}
+          </Button>
+        ))}
+      </div>
+    );
+  },
+};
 
 app.initializers.add('flarum-post-font-size', () => {
   applySize(getSavedSize());
