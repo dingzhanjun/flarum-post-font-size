@@ -55,6 +55,7 @@ app.initializers.add('flarum-post-font-size', () => {
 
   extend(PostUser.prototype, 'view', function (vnode) {
     if (!vnode || !vnode.children) return;
+    console.log(vnode)
     if (Array.isArray(vnode.children)) {
       vnode.children.push(<FontSizeControls />);
     }
