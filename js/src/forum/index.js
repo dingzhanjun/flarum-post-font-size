@@ -1,10 +1,7 @@
 import app from 'flarum/forum/app';
 import { extend } from 'flarum/common/extend';
-import DiscussionPage from 'flarum/forum/components/DiscussionPage';
 import Button from 'flarum/common/components/Button';
-import Post from 'flarum/forum/components/Post';
 import CommentPost from 'flarum/forum/components/CommentPost';
-import PostUser from 'flarum/forum/components/PostUser';
 
 const STORAGE_KEY = 'freehuaren-post-font-size';
 const SIZES = ['small', 'medium', 'large'];
@@ -50,42 +47,10 @@ function FontSizeControls() {
   );
 }
 
-function findByClass(vnode, className) {
-  if (!vnode) return null;
-
-  if (
-    vnode.attrs &&
-    typeof vnode.attrs.className === 'string' &&
-    vnode.attrs.className.split(' ').includes(className)
-  ) {
-    return vnode;
-  }
-
-  const children = vnode.children;
-
-  if (Array.isArray(children)) {
-    for (const child of children) {
-      const found = findByClass(child, className);
-
-      if (found) return found;
-    }
-  }
-
-  return null;
-}
-
 app.initializers.add('flarum-post-font-size', () => {
   applySize(getSavedSize());
 
-  extend(Post.prototype, 'view', function (vnode) {
-    console.log(vnode)
-    const header = findByClass(vnode, 'Post-header');
-    if (!header) return;
-
-    if (!Array.isArray(header.children)) {
-      header.children = [];
-    }
-
-    header.children.push(<FontSizeControls />);
+  extend(CommentPost.prototype, 'headerItems', function (items) {
+    items.add('fontSize', <FontSizeControls />);
   });
 });
