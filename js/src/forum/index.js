@@ -50,15 +50,42 @@ function FontSizeControls() {
   );
 }
 
+function findByClass(vnode, className) {
+  if (!vnode) return null;
+
+  if (
+    vnode.attrs &&
+    typeof vnode.attrs.className === 'string' &&
+    vnode.attrs.className.split(' ').includes(className)
+  ) {
+    return vnode;
+  }
+
+  const children = vnode.children;
+
+  if (Array.isArray(children)) {
+    for (const child of children) {
+      const found = findByClass(child, className);
+
+      if (found) return found;
+    }
+  }
+
+  return null;
+}
+
 app.initializers.add('flarum-post-font-size', () => {
   applySize(getSavedSize());
 
-  extend(PostUser.prototype, 'view', function (vnode) {
-    if (!vnode || !vnode.children) return;
+  extend(Post.prototype, 'view', function (vnode) {
     console.log(vnode)
-    if (Array.isArray(vnode.children)) {
-      vnode.children.push(<FontSizeControls />);
+    const header = findByClass(vnode, 'Post-header');
+    if (!header) return;
+
+    if (!Array.isArray(header.children)) {
+      header.children = [];
     }
-    // items.add('flarum-post-font-size', <FontSizeControls />, 5);
+
+    header.children.push(<FontSizeControls />);
   });
 });
